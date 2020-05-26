@@ -16,21 +16,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // TODO: Change API key to my own
-    const url =
-      "https://api.openweathermap.org/data/2.5/weather?q=Berlin&units=imperial&appid=e312dbeb8840e51f92334498a261ca1d";
-
-    axios.get(url).then((resp) => {
-      this.setState({
-        cityName: resp.data.name,
-        temp: resp.data.main.temp,
-        high: resp.data.main.temp_max,
-        low: resp.data.main.temp_min,
-        weather: resp.data.weather[0].description,
-        icon: resp.data.weather[0].icon,
-      });
-    });
-
+    this.getCityWeather("Berlin");
     var elems = document.querySelectorAll(".modal");
     window.M.Modal.init(elems);
   }
@@ -38,7 +24,11 @@ class App extends Component {
   searchCity = (e) => {
     e.preventDefault();
     const city = document.getElementById("city").value;
-    console.log(city);
+    this.getCityWeather(city);
+  };
+
+  getCityWeather = (city) => {
+    // TODO: Change API key to my own
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=e312dbeb8840e51f92334498a261ca1d`;
 
     axios.get(url).then((resp) => {
