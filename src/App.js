@@ -12,6 +12,7 @@ class App extends Component {
       low: "",
       weather: "",
       icon: "",
+      isRaining: "",
     };
   }
 
@@ -19,6 +20,15 @@ class App extends Component {
     this.getCityWeather("Berlin");
     var elems = document.querySelectorAll(".modal");
     window.M.Modal.init(elems);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.weather !== prevState.weather) {
+      const isRaining = this.state.weather.includes("rain");
+      if (isRaining) {
+        this.setState({ isRaining: "Rain, rain go away!!!" });
+      }
+    }
   }
 
   searchCity = (e) => {
@@ -65,6 +75,7 @@ class App extends Component {
           <div className="row">
             <div className="col s6 offset-s3">
               <h3>{this.state.cityName}</h3>
+              <p>{this.state.isRaining}</p>
               <a
                 className="waves-effect waves-light btn modal-trigger"
                 href="#modal1">
