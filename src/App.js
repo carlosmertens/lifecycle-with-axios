@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
+import Title from "./Title";
+// import SimpleFetch from "./SimpleFetch";
+import Header from "./Header";
+import Modal from "./Modal";
 
 class App extends Component {
   constructor() {
@@ -58,24 +62,19 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="header">
-          <h1>The Component Lifecycle and HTTP</h1>
-          <hr />
-        </div>
-
-        <div className="simple-fetch">
-          <p>
-            Current weather in Berlin is <b>{this.state.temp}</b> Fahrenheit
-          </p>
-          <hr />
-        </div>
+        <Title />
+        {/* <SimpleFetch temp={this.state.temp} /> */}
 
         <div className="modal-fetch">
           {/* Modal Trigger */}
           <div className="row">
             <div className="col s6 offset-s3">
-              <h3>{this.state.cityName}</h3>
-              <p>{this.state.isRaining}</p>
+              <Header
+                cityName={this.state.cityName}
+                isRaining={this.state.isRaining}
+              />
+              {/* <h3>{this.state.cityName}</h3>
+              <p>{this.state.isRaining}</p> */}
               <a
                 className="waves-effect waves-light btn modal-trigger"
                 href="#modal1">
@@ -87,7 +86,16 @@ class App extends Component {
             </div>
           </div>
 
-          {/* Modal Structure */}
+          <Modal
+            iconUrl={iconUrl}
+            cityName={this.state.cityName}
+            temp={this.state.temp}
+            high={this.state.high}
+            low={this.state.low}
+            weather={this.state.weather}
+          />
+
+          {/*
           <div id="modal1" className="modal">
             <div className="modal-content">
               <h4>{this.state.cityName}</h4>
@@ -108,8 +116,7 @@ class App extends Component {
                 Close
               </a>
             </div>
-          </div>
-          <hr />
+          </div> */}
         </div>
       </div>
     );
