@@ -1,6 +1,17 @@
 import React, { Component } from "react";
 
 class Modal extends Component {
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      console.log("Test");
+    }, 500);
+  }
+
+  componentWillUnmount() {
+    console.log("Component is history...");
+    clearInterval(this.timer);
+  }
+
   render() {
     return (
       <div id="modal1" className="modal">

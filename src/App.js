@@ -17,6 +17,7 @@ class App extends Component {
       weather: "",
       icon: "",
       isRaining: "",
+      showModal: true,
     };
   }
 
@@ -57,13 +58,17 @@ class App extends Component {
     });
   };
 
+  removeModal = () => {
+    console.log("Modal will be reomve from DOM");
+    this.setState({ showModal: false });
+  };
+
   render() {
     const iconUrl = `http://openweathermap.org/img/wn/${this.state.icon}@2x.png`;
 
     return (
       <div className="App">
         <Title />
-        {/* <SimpleFetch temp={this.state.temp} /> */}
 
         <div className="modal-fetch">
           {/* Modal Trigger */}
@@ -73,8 +78,6 @@ class App extends Component {
                 cityName={this.state.cityName}
                 isRaining={this.state.isRaining}
               />
-              {/* <h3>{this.state.cityName}</h3>
-              <p>{this.state.isRaining}</p> */}
               <a
                 className="waves-effect waves-light btn modal-trigger"
                 href="#modal1">
@@ -86,37 +89,21 @@ class App extends Component {
             </div>
           </div>
 
-          <Modal
-            iconUrl={iconUrl}
-            cityName={this.state.cityName}
-            temp={this.state.temp}
-            high={this.state.high}
-            low={this.state.low}
-            weather={this.state.weather}
-          />
-
-          {/*
-          <div id="modal1" className="modal">
-            <div className="modal-content">
-              <h4>{this.state.cityName}</h4>
-              <p>
-                <b>{this.state.temp} Fahrenheit</b>
-              </p>
-              <p>
-                High: {this.state.high} | Low: {this.state.low}
-              </p>
-              <p>
-                {this.state.weather} <img src={iconUrl} alt="" />
-              </p>
-            </div>
-            <div className="modal-footer">
-              <a
-                href="#!"
-                className="modal-close waves-effect waves-green btn-flat">
-                Close
-              </a>
-            </div>
-          </div> */}
+          {this.state.showModal ? (
+            <Modal
+              iconUrl={iconUrl}
+              cityName={this.state.cityName}
+              temp={this.state.temp}
+              high={this.state.high}
+              low={this.state.low}
+              weather={this.state.weather}
+            />
+          ) : (
+            ""
+          )}
+          <button onClick={this.removeModal} className="btn">
+            Remove Model
+          </button>
         </div>
       </div>
     );
