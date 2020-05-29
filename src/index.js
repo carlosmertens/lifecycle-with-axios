@@ -2,13 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 // import App from './App';
-import FormPractice from "./FormPractice";
+// import FormPractice from "./FormPractice";
+import Calculator from "./temperatureApp/Calculator";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    <FormPractice />
+    {/* <FormPractice /> */}
+    <Calculator />
   </React.StrictMode>,
   document.getElementById("root")
 );
