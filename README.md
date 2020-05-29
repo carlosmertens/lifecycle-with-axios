@@ -1,5 +1,21 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Learning Lifecycle With Axios
+
+## Description
+
+Basic tutorail to learn pulling data from an external API with Axios.
+
+Also to learn `Form` components manage by React and
+
+#### Tutorial Instructor
+
+- **Robert Bunch** - _Code school instructor, software architect and engineer_
+
+## Author
+
+- **Carlos Mertens** - _Python/Machine Learning Developer | Mertens-Applications_
+
 ## Available Scripts
 
 In the project directory, you can run:
